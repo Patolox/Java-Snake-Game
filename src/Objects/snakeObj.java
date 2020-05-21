@@ -2,22 +2,22 @@ package Objects;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
-import main.Main;
 
 public class snakeObj{
 
-	public static final int width = 15;
-	public static final int height = 15;
-	private static Random randm = new Random();
+//	public static final int width = 15;
+//	public static final int height = 15;
+
+	public int width = 15;
+	public int height = 15;
 	
 	private boolean move[];
-	public int speed = 15;
+	public int speed = 10;
 	public int x;
 	public int y;
-	public int points = 0;
 	public int pos;
+	private boolean eating = false;
 	public List<snakeObj> snake;
 	
 	public snakeObj(int x, int y) {
@@ -91,6 +91,11 @@ public class snakeObj{
 		}
 	}
 	
+	private void setEating() {
+		for(int i = 0; i < this.snake.size() - 1; i++) {
+			this.snake.get(i).eating = true;
+		}
+	}
 	
 	private void addSnake(snakeObj s) {
 		this.snake.add(s);
@@ -115,12 +120,8 @@ public class snakeObj{
 		snakeObj newSnake = new snakeObj(lastX, lastY, snakeSize);
 		
 		this.addSnake(newSnake);
-
-		points = points+10;
-		
-//		if(this.speed < 10) {
-//		this.speed = this.speed+1;
-//		}	
+		//this.speed = this.speed+10;
+		//this.setEating();
 		
 	}
 	
@@ -136,64 +137,25 @@ public class snakeObj{
 		return snakes;
 	}
 	
-	
 	public void updatePositions() {
 		int size = this.snake.size()-1;
 		
 		for(int i = size; i > 0; i--) {
+//			if(this.snake.get(size - i).eating == true) {
+//				if(this.move[2] == true || this.move[3] == true) {
+//					this.snake.get(size - i).width = 35;
+//				}else {
+//					this.snake.get(size - i).height = 35;	
+//				}
+//				this.snake.get(size - i).eating = false;
+//			}else {
+//				this.snake.get(size - i).height = 15;
+//				this.snake.get(size - i).width = 15;
+//			}
 			this.snake.get(i).x = this.snake.get(i-1).x;
 			this.snake.get(i).y = this.snake.get(i-1).y;
 		}
 
-	}
-	
-	private boolean checkCollide() {
-		int size = this.snake.size()-1;
-		
-		for(int i = size; i > 2; i--) {
-			if(this.snake.get(0).x == this.snake.get(i).x && this.snake.get(0).y == this.snake.get(i).y) {
-				return true;
-			}
-		}
-		return false;
-	}
-	
-	public int checkStatus(fruit f) {
-		int rx, ry;
-		
-		if(this.snake.get(0).x > Main.frameWidth) {
-			this.snake.get(0).x = 0;
-		}else if(this.snake.get(0).x < 0) {
-			this.snake.get(0).x = 800;
-		}
-		
-		if(this.snake.get(0).y > Main.frameHeight) {
-			this.snake.get(0).y = 0;
-		}else if(this.snake.get(0).y < 0) {
-			this.snake.get(0).y = 600;
-		}
-		
-		if(this.snake.get(0).x == f.x && this.snake.get(0).y == f.y) {
-			eat();
-			do {
-			 rx = randm.nextInt(750);
-			}while(rx%this.speed != 0);
-			
-			do {
-			 ry = randm.nextInt(550);
-			}while(ry%this.speed != 0);
-			
-			f.x = rx;
-			f.y = ry;
-			return 1;
-		}
-		
-		
-		if(this.checkCollide() == true) {
-			return 0;
-		}
-		
-		return -1;
 	}
 	
 }

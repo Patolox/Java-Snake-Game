@@ -2,6 +2,8 @@ package Objects;
 
 import java.util.Random;
 
+import main.Main;
+
 public class fruit {
 
 	public static final int width = 15;
@@ -19,12 +21,9 @@ public class fruit {
 	public fruit(snakeObj snake) {
 		this.randm = new Random();
 		do {
-			 this.x = randm.nextInt(760) + snake.speed;
-			}while(this.x%snake.speed != 0);
-			
-			do {
-			 this.y = randm.nextInt(560) + snake.speed;
-			}while(this.y%snake.speed != 0);
+			 this.x = randm.nextInt(Main.frameWidth/snake.speed)*15;
+			 this.y = randm.nextInt(Main.frameHeight/snake.speed)*15;
+		}while(this.x < 100 || this.x > Main.frameWidth - 100 || this.y < 100 || this.y > Main.frameHeight - 100);
 	}
 	
 }

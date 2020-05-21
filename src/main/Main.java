@@ -1,7 +1,6 @@
 package main;
 
 import java.awt.Color;
-import java.awt.event.ActionListener;
 import javax.swing.Timer;
 
 import javax.swing.JFrame;
@@ -13,10 +12,10 @@ import control.GameLoop;
 import control.inputHandler;
 
 public class Main extends JFrame {
-//Feito por Cícero Alves Duarte Filho
+//Feito por Cï¿½cero Alves Duarte Filho
 	
-	public static int frameWidth = 800;
-	public static int frameHeight = 600;
+	public static int frameWidth = 600;
+	public static int frameHeight = 800;
 	public static String Title = "Snake Game by Cicero Alves Duarte Filho - Points: ";
 	
 	public static void main(String[] Args) {
@@ -37,7 +36,6 @@ public class Main extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(frameWidth, frameHeight);
 		setTitle(Title);
-		c.setBackground(Color.BLACK);
 		add(c);
 		setLocationRelativeTo(null);
 		setVisible(true);
