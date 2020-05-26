@@ -27,7 +27,7 @@ public class inputHandler{
 					
 				}else if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
 					snake.RIGHT();
-				}				
+				}
 					
 			}
 		});

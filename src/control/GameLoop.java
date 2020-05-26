@@ -20,7 +20,6 @@ public class GameLoop implements ActionListener {
 	private int endGame;
 	private int points;
 	private int level;
-	//private Thread thread;
 	
 	public GameLoop(GameCanvas c, snakeObj snake, fruit fruit, Main m) {
 		this.c = c;
@@ -51,12 +50,6 @@ public class GameLoop implements ActionListener {
 			}
 		}
 		return false;
-	}
-	
-	private void increaseLevel() {
-		if(this.level < 10) {
-			this.snake.snake.get(0).speed = 10 + level;
-		}
 	}
 	
 	public int checkStatus(fruit f, int level) {
@@ -90,12 +83,11 @@ public class GameLoop implements ActionListener {
 			}
 		}
 		
-		if(Math.abs(this.snake.snake.get(0).x - f.x) <= this.snake.width && Math.abs(this.snake.snake.get(0).y - f.y) <= this.snake.height) {
+		if(this.snake.snake.get(0).x == f.x && this.snake.snake.get(0).y == f.y) {
 			this.snake.snake.get(0).eat();
-			this.increaseLevel();
 		do {
-			 rx = randm.nextInt(Main.frameWidth/snake.speed)*15;
-			 ry = randm.nextInt(Main.frameHeight/snake.speed)*15;
+			 rx = randm.nextInt(Main.frameWidth/snake.speed)*snakeObj.width;
+			 ry = randm.nextInt(Main.frameHeight/snake.speed)*snakeObj.height;
 		}while(rx < 100 || rx > Main.frameWidth - 100 || ry < 100 || ry > Main.frameHeight - 100);
 			f.x = rx;
 			f.y = ry;
