@@ -1,12 +1,13 @@
 package Objects;
 
-import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
 
+import javax.swing.JPanel;
+
 import main.Main;
 
-public class GameCanvas extends Canvas implements Runnable {
+public class GameCanvas extends JPanel implements Runnable {
 
 	private snakeObj s;
 	private fruit f;

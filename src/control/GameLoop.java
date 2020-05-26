@@ -34,9 +34,11 @@ public class GameLoop implements ActionListener {
 
 		snake.snake.get(0).resetMovement();
 		snake.snake.get(0).x = -100;
+		snake.snake = null;
 		snake = null;
 		m.dispose();
 		m = null;
+		System.gc();
 		snakeObj newGame = new snakeObj(0, 0);
 		new Main(newGame, new fruit(newGame));
 	}

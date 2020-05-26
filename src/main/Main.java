@@ -36,10 +36,14 @@ public class Main extends JFrame {
         timer = new Timer(40, loop); //O jogo roda a 25 FPS...
         h.addListener(c, snake);
     
+        c.setFocusable(true);
+        c.requestFocus();
+        
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(frameWidth, frameHeight);
 		setTitle(Title);
-		add(c);
+		setBackground(Color.BLACK);
+		getContentPane().add(c);
 		setLocationRelativeTo(null);
 		setVisible(true);
 		
