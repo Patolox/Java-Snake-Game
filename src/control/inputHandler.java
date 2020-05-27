@@ -19,7 +19,6 @@ public class inputHandler{
 					snake.DOWN();
 					
 				}else if(e.getKeyCode() == KeyEvent.VK_UP) {
-					c.repaint();
 					snake.UP();
 					
 				}else if(e.getKeyCode() == KeyEvent.VK_LEFT) {
